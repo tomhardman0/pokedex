@@ -28,9 +28,19 @@ export default class HomeScreen extends Component {
           Pokedex
         </Text>
         <Button
-          title="Explore"
+          style={styles.button}
+          title='Explore'
+          color='#ffffff'
           onPress={() =>
             navigate('Explorer')
+          }
+        />
+        <Button
+          style={styles.button}
+          title='Search'
+          color='#ffffff'
+          onPress={() =>
+            navigate('Search')
           }
         />
       </View>

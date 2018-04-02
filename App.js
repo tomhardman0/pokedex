@@ -12,10 +12,10 @@ import {
 
 import Home from './src/components/home/home';
 import Explorer from './src/components/explorer/explorer';
+import Search from './src/components/search/search';
 
-const App = StackNavigator({
-    Home: { screen: Home },
-    Explorer: { screen: Explorer }
-  }
-);
-export default App;
+export default App = StackNavigator({
+  Home: { screen: Home },
+  Explorer: { screen: Explorer },
+  Search: { screen: Search }
+});

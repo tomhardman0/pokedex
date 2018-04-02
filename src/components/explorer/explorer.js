@@ -11,7 +11,7 @@ import {
 import defaultHeaderStyles from '../../shared/default-header';
 import styles from './explorer-styles';
 
-import explorerConfig from './config.json';
+import explorerConfig from './config';
 
 import BackButton from '../back-button/back-button';
 
@@ -22,20 +22,22 @@ export default class Explorer extends Component {
   }
 
   _renderTypeTile(datum) {
+    const { item } = datum;
     return (
-      <TouchableOpacity style={styles.listItem}>;
+      <TouchableOpacity style={[styles.listItem, styles[item.name]]}>;
         <View style={styles.tileContainer}>
           <Image
             style={styles.tileImage}
-            source={require('../../../assets/fire.png')}
+            source={item.reqPath}
           />
         </View>
+
+        <Text style={styles.tileText}>{`${item.name.charAt(0).toUpperCase()}${item.name.slice(1)}`}</Text>
       </TouchableOpacity>
     )
   }
 
   render() {
-    console.log(explorerConfig)
     const { goBack } = this.props.navigation;
     return (
       <View style={styles.container}>

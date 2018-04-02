@@ -8,17 +8,5 @@ export default styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#fc2229',
-  },
-  title: {
-    fontSize: 42,
-    textAlign: 'center',
-    marginTop: 20,
-    marginBottom: 10,
-    color: '#ffffff',
-    fontWeight: '800'
-  },
-  logo: {
-    width: 120,
-    height: 120
   }
 });
