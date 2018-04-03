@@ -24,14 +24,29 @@ export default class ExplorerNavigation extends Component {
     return (
       <View style={styles.container}>
         <BackButton goBack={goBack} />
+
         <TouchableOpacity style={styles.tile}>;
+          <View style={styles.tileImageCont}>
+            <Image
+              style={styles.tileImage}
+              source={require('../../../assets/explorer/all.jpg')}
+            />
+          </View>
+          <View style={[styles.tileImageCont, styles.tileImageLayer]} />
+
           <Text style={styles.tileText}>All</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.tile} onPress={() => navigate('TypeExplorer')}>;
+
+        <TouchableOpacity style={styles.tile}  onPress={() => navigate('TypeExplorer')}>;
+          <View style={styles.tileImageCont}>
+            <Image
+              style={styles.tileImage}
+              source={require('../../../assets/explorer/type.png')}
+            />
+          </View>
+          <View style={[styles.tileImageCont, styles.tileImageLayer]} />
+
           <Text style={styles.tileText}>Type</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.tile}>;
-          <Text style={styles.tileText}>Something else</Text>
         </TouchableOpacity>
       </View>
     );
