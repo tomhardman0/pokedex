@@ -9,13 +9,13 @@ import {
 } from 'react-native';
 
 import defaultHeaderStyles from '../../shared/default-header';
-import styles from './explorer-styles';
+import styles from './type-explorer-styles';
 
-import explorerConfig from './config';
+import typeExplorerConfig from './config';
 
 import BackButton from '../back-button/back-button';
 
-export default class Explorer extends Component {
+export default class TypeExplorer extends Component {
   static navigationOptions = {
     title: 'Explorer',
     ...defaultHeaderStyles
@@ -43,7 +43,7 @@ export default class Explorer extends Component {
       <View style={styles.container}>
         <BackButton goBack={goBack} />
         <FlatList
-          data={explorerConfig}
+          data={typeExplorerConfig}
           numColumns={2}
           renderItem={this._renderTypeTile}
         />

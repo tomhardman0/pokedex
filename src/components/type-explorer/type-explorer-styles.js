@@ -24,7 +24,7 @@ export default styles = StyleSheet.create({
     fontWeight: '800',
     textShadowColor: 'rgba(0, 0, 0, 0.4)',
     textShadowOffset: {width: 0, height: 1},
-    textShadowRadius: 6,
+    textShadowRadius: 4,
     marginTop: 135
   },
   fire: {

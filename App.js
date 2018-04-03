@@ -11,11 +11,13 @@ import {
 } from 'react-navigation';
 
 import Home from './src/components/home/home';
-import Explorer from './src/components/explorer/explorer';
+import TypeExplorer from './src/components/type-explorer/type-explorer';
+import ExplorerNavigation from './src/components/explorer-navigation/explorer-navigation';
 import Search from './src/components/search/search';
 
 export default App = StackNavigator({
   Home: { screen: Home },
-  Explorer: { screen: Explorer },
+  ExplorerNavigation: { screen: ExplorerNavigation },
+  TypeExplorer: { screen: TypeExplorer },
   Search: { screen: Search }
 });

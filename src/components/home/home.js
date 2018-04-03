@@ -31,17 +31,13 @@ export default class HomeScreen extends Component {
           style={styles.button}
           title='Explore'
           color='#ffffff'
-          onPress={() =>
-            navigate('Explorer')
-          }
+          onPress={() => navigate('ExplorerNavigation')}
         />
         <Button
           style={styles.button}
           title='Search'
           color='#ffffff'
-          onPress={() =>
-            navigate('Search')
-          }
+          onPress={() => navigate('Search')}
         />
       </View>
     );
