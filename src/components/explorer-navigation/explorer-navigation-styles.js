@@ -18,10 +18,7 @@ export default styles = StyleSheet.create({
   tileText: {
     fontSize: 80,
     color: '#ffffff',
-    fontWeight: '800',
-    textShadowColor: 'rgba(0, 0, 0, 0.4)',
-    textShadowOffset: {width: 0, height: 1},
-    textShadowRadius: 4
+    fontWeight: '800'
   },
   tileImageCont: {
     position: 'absolute',

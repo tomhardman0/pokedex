@@ -25,28 +25,32 @@ export default class ExplorerNavigation extends Component {
       <View style={styles.container}>
         <BackButton goBack={goBack} />
 
-        <TouchableOpacity style={styles.tile}>;
-          <View style={styles.tileImageCont}>
-            <Image
-              style={styles.tileImage}
-              source={require('../../../assets/explorer/all.jpg')}
-            />
-          </View>
-          <View style={[styles.tileImageCont, styles.tileImageLayer]} />
+        <TouchableOpacity
+          style={styles.tile}
+          onPress={() => navigate('Search', { title: 'Explore All' })}>;
+            <View style={styles.tileImageCont}>
+              <Image
+                style={styles.tileImage}
+                source={require('../../../assets/explorer/all.jpg')}
+              />
+            </View>
+            <View style={[styles.tileImageCont, styles.tileImageLayer]} />
 
-          <Text style={styles.tileText}>All</Text>
+            <Text style={styles.tileText}>All</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.tile}  onPress={() => navigate('TypeExplorer')}>;
-          <View style={styles.tileImageCont}>
-            <Image
-              style={styles.tileImage}
-              source={require('../../../assets/explorer/type.png')}
-            />
-          </View>
-          <View style={[styles.tileImageCont, styles.tileImageLayer]} />
+        <TouchableOpacity
+          style={styles.tile}
+          onPress={() => navigate('TypeExplorer')}>;
+            <View style={styles.tileImageCont}>
+              <Image
+                style={styles.tileImage}
+                source={require('../../../assets/explorer/type.png')}
+              />
+            </View>
+            <View style={[styles.tileImageCont, styles.tileImageLayer]} />
 
-          <Text style={styles.tileText}>Type</Text>
+            <Text style={styles.tileText}>Type</Text>
         </TouchableOpacity>
       </View>
     );
