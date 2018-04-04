@@ -41,7 +41,6 @@ export default class ListView extends Component {
 
   filterDataForTypefilter() {
     const { data, typeFilter } = this.state;
-    console.log(this.state)
 
     if (!typeFilter) {
       return data;

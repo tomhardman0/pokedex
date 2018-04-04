@@ -20,7 +20,6 @@ export default class HomeScreen extends Component {
 
   render() {
     const { navigate } = this.props.navigation;
-    console.log(appData)
     return (
       <View style={styles.container}>
         <Image

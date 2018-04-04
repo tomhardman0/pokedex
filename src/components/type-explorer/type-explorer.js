@@ -10,6 +10,7 @@ import {
 
 import defaultHeaderStyles from '../../shared/default-header';
 import styles from './type-explorer-styles';
+import typeToColourStyles from '../../shared/type-to-colour';
 
 import typeExplorerConfig from '../../../config/type-explorer-config';
 
@@ -30,7 +31,7 @@ export default class TypeExplorer extends Component {
 
     return (
       <TouchableOpacity
-        style={[styles.listItem, styles[item.name]]}
+        style={[styles.listItem, typeToColourStyles[item.name]]}
         onPress={() => navigate('Search', searchOptions)}>;
           <View style={styles.tileContainer}>
             <Image
