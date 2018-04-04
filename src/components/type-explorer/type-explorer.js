@@ -11,7 +11,7 @@ import {
 import defaultHeaderStyles from '../../shared/default-header';
 import styles from './type-explorer-styles';
 
-import typeExplorerConfig from './config';
+import typeExplorerConfig from '../../../config/type-explorer-config';
 
 import BackButton from '../back-button/back-button';
 
@@ -21,24 +21,31 @@ export default class TypeExplorer extends Component {
     ...defaultHeaderStyles
   }
 
-  _renderTypeTile(datum) {
+  _renderTypeTile(datum, navigate) {
     const { item } = datum;
-    return (
-      <TouchableOpacity style={[styles.listItem, styles[item.name]]}>;
-        <View style={styles.tileContainer}>
-          <Image
-            style={styles.tileImage}
-            source={item.reqPath}
-          />
-        </View>
+    const searchOptions = {
+      title: `Search ${item.name} types`,
+      typeFilter: item.name
+    };
 
-        <Text style={styles.tileText}>{`${item.name.charAt(0).toUpperCase()}${item.name.slice(1)}`}</Text>
+    return (
+      <TouchableOpacity
+        style={[styles.listItem, styles[item.name]]}
+        onPress={() => navigate('Search', searchOptions)}>;
+          <View style={styles.tileContainer}>
+            <Image
+              style={styles.tileImage}
+              source={item.reqPath}
+            />
+          </View>
+
+          <Text style={styles.tileText}>{`${item.name.charAt(0).toUpperCase()}${item.name.slice(1)}`}</Text>
       </TouchableOpacity>
     )
   }
 
   render() {
-    const { goBack } = this.props.navigation;
+    const { goBack, navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
         <BackButton goBack={goBack} />
@@ -46,6 +53,7 @@ export default class TypeExplorer extends Component {
           data={typeExplorerConfig}
           numColumns={2}
           renderItem={this._renderTypeTile}
+          renderItem={(item) => this._renderTypeTile(item, navigate)}
         />
       </View>
     );

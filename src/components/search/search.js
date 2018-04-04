@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import {
   StyleSheet,
-  Text,
   View,
   TouchableOpacity,
   FlatList,
-  Image
+  Text
 } from 'react-native';
 
 import defaultHeaderStyles from '../../shared/default-header';
@@ -13,6 +12,7 @@ import styles from './search-styles';
 
 import BackButton from '../back-button/back-button';
 import SearchInput from '../search-input/search-input';
+import SearchItem from '../search-item/search-item';
 
 import allData from '../../../config/app-data.json';
 
@@ -29,7 +29,9 @@ export default class ListView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchText: PLACEHOLDER_TEXT
+      searchText: PLACEHOLDER_TEXT,
+      typeFilter: this.props.navigation.state.params.typeFilter,
+      data: allData
     };
   }
 
@@ -37,29 +39,49 @@ export default class ListView extends Component {
     return item.id.toString();
   }
 
-  _renderListItem({ item }) {
-    return (
-      <Text style={styles.listItem}>
-        {item.name}
-      </Text>
-    );
-  }
+  filterDataForTypefilter() {
+    const { data, typeFilter } = this.state;
+    console.log(this.state)
 
-  filterData(searchText) {
-    if (this.state.searchText === PLACEHOLDER_TEXT) {
-      return allData;
+    if (!typeFilter) {
+      return data;
     }
-
-    console.log(searchText)
-    return allData.filter((datum) => {
-      return datum.name.match(searchText);
-      // return /searchText/.test(datum.name);
+    return data.filter((datum) => {
+      return datum.types.includes(typeFilter);
     });
   }
 
+  filterDataForSearch(searchText) {
+    const { data, typeFilter } = this.state;
+
+    if (searchText === PLACEHOLDER_TEXT && !typeFilter) {
+      return data;
+    }
+
+    if (searchText === PLACEHOLDER_TEXT && typeFilter) {
+      return this.filterDataForTypefilter();
+    }
+
+    return this.filterDataForTypefilter().filter((datum) => {
+      return datum.name.match(searchText);
+    });
+  }
+
+  _renderListItemSeparator() {
+    return (
+      <View
+        style={{
+          borderBottomColor: 'rgba(0, 0, 0, 0.1)',
+          borderBottomWidth: 1
+        }}
+      />
+    );
+  }
+
   handleSearch(text) {
-    console.log(text)
-    this.setState({ searchText: text.toLowerCase() })
+    this.setState({
+      searchText: text.toLowerCase()
+    });
   }
 
   render() {
@@ -74,9 +96,10 @@ export default class ListView extends Component {
         />
         <View style={styles.listCont}>
           <FlatList
-            data={this.filterData(state.searchText)}
-            renderItem={this._renderListItem}
+            data={this.filterDataForSearch(state.searchText)}
+            renderItem={SearchItem}
             keyExtractor={this._keyExtractor}
+            ItemSeparatorComponent={this._renderListItemSeparator}
           />
         </View>
       </View>

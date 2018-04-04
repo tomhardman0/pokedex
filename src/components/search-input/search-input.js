@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
   View,
   TextInput
@@ -25,3 +26,8 @@ export default class SearchInput extends Component {
     );
   }
 }
+
+SearchInput.propTypes = {
+  handleSearch: PropTypes.func.isRequired,
+  text: PropTypes.string.isRequired
+};
