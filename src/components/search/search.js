@@ -13,6 +13,7 @@ import styles from './search-styles';
 import BackButton from '../back-button/back-button';
 import SearchInput from '../search-input/search-input';
 import SearchItem from '../search-item/search-item';
+import Separator from '../separator/separator';
 
 import allData from '../../../config/app-data.json';
 
@@ -66,25 +67,23 @@ export default class ListView extends Component {
     });
   }
 
-  _renderListItemSeparator() {
-    return (
-      <View
-        style={{
-          borderBottomColor: 'rgba(0, 0, 0, 0.1)',
-          borderBottomWidth: 1
-        }}
-      />
-    );
-  }
-
   handleSearch(text) {
     this.setState({
       searchText: text.toLowerCase()
     });
   }
 
+  _renderSearchItem(item, navigate) {
+    return (
+      <SearchItem
+        item={item}
+        navigate={navigate}
+      />
+    );
+  }
+
   render() {
-    const { goBack } = this.props.navigation;
+    const { goBack, navigate } = this.props.navigation;
     const { state } = this;
     return (
       <View style={styles.container}>
@@ -96,9 +95,9 @@ export default class ListView extends Component {
         <View style={styles.listCont}>
           <FlatList
             data={this.filterDataForSearch(state.searchText)}
-            renderItem={SearchItem}
+            renderItem={(item) => this._renderSearchItem(item.item, navigate)}
             keyExtractor={this._keyExtractor}
-            ItemSeparatorComponent={this._renderListItemSeparator}
+            ItemSeparatorComponent={Separator}
           />
         </View>
       </View>

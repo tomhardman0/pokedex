@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {
   View,
-  Text
+  Text,
+  TouchableOpacity
 } from 'react-native';
 
 import styles from './search-item-styles';
@@ -19,20 +20,22 @@ const _renderTypeCircles = (types) => {
   }).reverse();
 };
 
-export default ({ item }) => {
+export default ({ item, navigate }) => {
   return (
-    <View style={styles.listItemCont}>
-      <View style={styles.listItemNumberWrapper}>
-        <Text style={styles.listItemNumber}>
-          #{item.id}
+    <TouchableOpacity onPress={() => navigate('Pokemon', item)}>
+      <View style={styles.listItemCont}>
+        <View style={styles.listItemNumberWrapper}>
+          <Text style={styles.listItemNumber}>
+            #{item.id}
+          </Text>
+        </View>
+        <Text style={styles.listItem}>
+          {`${item.name.charAt(0).toUpperCase()}${item.name.slice(1)}`}
         </Text>
+        <View style={styles.typeCircleWrappers}>
+          {_renderTypeCircles(item.types)}
+        </View>
       </View>
-      <Text style={styles.listItem}>
-        {`${item.name.charAt(0).toUpperCase()}${item.name.slice(1)}`}
-      </Text>
-      <View style={styles.typeCircleWrappers}>
-        {_renderTypeCircles(item.types)}
-      </View>
-    </View>
+    </TouchableOpacity>
   );
 }
