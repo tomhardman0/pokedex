@@ -8,20 +8,14 @@ export default styles = StyleSheet.create({
     flexDirection: 'column',
     backgroundColor: '#333333'
   },
-  cont: {
+  imageCont: {
     width: '100%',
     justifyContent: 'center',
-    alignItems: 'center'
-  },
-  imageCont: {
-    height: '40%'
+    alignItems: 'center',
+    height: '55%'
   },
   image: {
     resizeMode: 'contain',
-    width: '60%'
-  },
-  contentCont: {
-    height: '60%',
-    backgroundColor: '#ffffff'
+    width: '80%'
   }
 });

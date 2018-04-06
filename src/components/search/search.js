@@ -98,6 +98,7 @@ export default class ListView extends Component {
             renderItem={(item) => this._renderSearchItem(item.item, navigate)}
             keyExtractor={this._keyExtractor}
             ItemSeparatorComponent={Separator}
+            initialNumToRender={12}
           />
         </View>
       </View>

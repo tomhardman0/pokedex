@@ -22,7 +22,7 @@ export default class TypeExplorer extends Component {
     ...defaultHeaderStyles
   }
 
-  _renderTypeTile(datum, navigate) {
+  _renderTypeTile = (datum, navigate) => {
     const { item } = datum;
     const searchOptions = {
       title: `Search ${item.name} types`,
@@ -55,6 +55,7 @@ export default class TypeExplorer extends Component {
           numColumns={2}
           renderItem={this._renderTypeTile}
           renderItem={(item) => this._renderTypeTile(item, navigate)}
+          initialNumToRender={8}
         />
       </View>
     );
