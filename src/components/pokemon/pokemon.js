@@ -27,18 +27,19 @@ export default class ExplorerNavigation extends Component {
 
   render() {
     const { goBack, state } = this.props.navigation;
+    const { types, abilities, stats, id } = state.params;
     return (
       <View style={styles.container}>
         <BackButton goBack={goBack} />
 
-        <View style={[styles.imageCont, typeToColourStyles[state.params.types[0]]]}>
+        <View style={[styles.imageCont, typeToColourStyles[types[0]]]}>
           <Image
             style={styles.image}
-            source={idToImageMap[state.params.id]}
+            source={idToImageMap[id]}
           />
         </View>
 
-        <InfoTabs backgroundColorStyle={typeToColourStyles[state.params.types[0]]} />
+        <InfoTabs info={state.params} />
 
       </View>
     );

@@ -6,28 +6,36 @@ import {
 
 import styles from './stats-info-styles';
 
+const displayNameMap = {
+  'attack': 'Attack',
+  'defense': 'Defense',
+  'hp': 'HP',
+  'special-attack': 'Special Attack',
+  'special-defense': 'Special Defense',
+  'speed': 'Speed'
+};
+
 export default class StatsInfoTab extends Component {
 
-  _renderTemp = () => {
-    const arr = [1,2,3,4,5,6]
-    return arr.map((item) => {
+  _renderStatsTiles = () => {
+    return this.props.data.map((item) => {
       return (
-        <View key={item} style={styles.statBlock}>
+        <View key={item.name} style={styles.statBlock}>
           <Text style={styles.tileTag}>
-            Health points
+            {displayNameMap[item.name]}
           </Text>
           <Text style={styles.tileNum}>
-            50
+            {item.num}
           </Text>
         </View>
       );
-    });
+    }).reverse();
   }
 
   render() {
     return (
       <View style={styles.cont}>
-        {this._renderTemp()}
+        {this._renderStatsTiles()}
       </View>
     );
   }

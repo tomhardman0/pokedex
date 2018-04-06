@@ -17,7 +17,7 @@ const _renderTypeCircles = (types) => {
         </Text>
       </View>
     );
-  }).reverse();
+  });
 };
 
 export default ({ item, navigate }) => {

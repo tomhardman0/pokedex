@@ -12,6 +12,7 @@ import {
 import StatsInfo from '../stats-info/stats-info';
 
 import styles from './info-tabs-styles';
+import typeToColourStyles from '../../shared/type-to-colour';
 
 const initialLayout = {
   height: 0,
@@ -35,11 +36,14 @@ export default class InfoTabs extends Component {
     this.setState({ index });
   }
 
-  _renderScene = SceneMap({
-    stats: () => <StatsInfo />,
-    abilities: SecondRoute,
-    types: ThirdRoute
-  })
+  _renderScene(...args) {
+    const { stats, abilities, types } = this.props.info;
+    return SceneMap({
+      stats: () => <StatsInfo data={stats} />,
+      abilities: SecondRoute,
+      types: ThirdRoute
+    });
+  }
 
   _renderHeader(props, bgColour) {
     return (
@@ -53,11 +57,12 @@ export default class InfoTabs extends Component {
   }
 
   render() {
+    const headerBgColour = typeToColourStyles[this.props.info.types[0]];
     return (
       <TabViewAnimated
         navigationState={this.state}
-        renderScene={this._renderScene}
-        renderHeader={(props) => this._renderHeader(props, this.props.backgroundColorStyle)}
+        renderScene={this._renderScene()}
+        renderHeader={(props) => this._renderHeader(props, headerBgColour)}
         onIndexChange={this._handleIndexChange}
         initialLayout={initialLayout}
       />

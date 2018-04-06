@@ -21,11 +21,11 @@ export default styles = StyleSheet.create({
     position: 'absolute',
     top: 10,
     left: 10,
-    fontSize: 10,
+    fontSize: 12,
     opacity: 0.8
   },
   tileNum: {
-    fontSize: 40,
+    fontSize: 44,
     paddingTop: 10
   }
 });
