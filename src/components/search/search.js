@@ -30,7 +30,7 @@ export default class ListView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchText: PLACEHOLDER_TEXT,
+      searchText: '',
       typeFilter: this.props.navigation.state.params.typeFilter,
       data: allData
     };
@@ -54,11 +54,7 @@ export default class ListView extends Component {
   filterDataForSearch(searchText) {
     const { data, typeFilter } = this.state;
 
-    if (searchText === PLACEHOLDER_TEXT && !typeFilter) {
-      return data;
-    }
-
-    if (searchText === PLACEHOLDER_TEXT && typeFilter) {
+    if (typeFilter && !searchText) {
       return this.filterDataForTypefilter();
     }
 
@@ -89,6 +85,7 @@ export default class ListView extends Component {
       <View style={styles.container}>
         <BackButton goBack={goBack} />
         <SearchInput
+          placeholder={PLACEHOLDER_TEXT}
           handleSearch={this.handleSearch.bind(this)}
           text={state.searchText}
         />

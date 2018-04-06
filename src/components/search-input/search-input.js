@@ -19,6 +19,8 @@ export default class SearchInput extends Component {
       <View style={styles.inputCont}>
         <TextInput
           style={styles.input}
+          placeholderTextColor='#C0392B'
+          placeholder={props.placeholder}
           onChangeText={props.handleSearch}
           value={props.text}
         />
