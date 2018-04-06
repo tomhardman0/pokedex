@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
   View,
   Text,
@@ -12,7 +13,7 @@ import TypeCircle from '../type-circle/type-circle';
 
 import textManipulation from '../../libs/text';
 
-export default ({ item, navigate }) => {
+export default function SearchItem({ item, navigate }) {
   return (
     <TouchableOpacity onPress={() => navigate('Pokemon', item)}>
       <View style={styles.listItemCont}>
@@ -31,3 +32,7 @@ export default ({ item, navigate }) => {
     </TouchableOpacity>
   );
 }
+
+SearchItem.propTypes = {
+  item: PropTypes.object.isRequired
+};

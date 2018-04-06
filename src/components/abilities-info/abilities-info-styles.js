@@ -14,12 +14,12 @@ export default styles = StyleSheet.create({
     width: '100%'
   },
   abilityName: {
-    fontSize: 20,
+    fontSize: 17,
     textDecorationLine: 'underline',
-    paddingBottom: 6
+    paddingBottom: 5
   },
   abilityDesc: {
-    fontSize: 12,
-    paddingBottom: 13
+    fontSize: 14,
+    paddingBottom: 11
   }
 });

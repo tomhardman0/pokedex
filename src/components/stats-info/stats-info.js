@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
   View,
   Text
@@ -39,3 +40,7 @@ export default class StatsInfoTab extends Component {
     );
   }
 }
+
+StatsInfoTab.propTypes = {
+  data: PropTypes.array.isRequired
+};

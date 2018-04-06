@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
+  ScrollView,
   View,
   Text
 } from 'react-native';
@@ -27,9 +29,13 @@ export default class AbilitiesInfoTab extends Component {
 
   render() {
     return (
-      <View style={styles.cont}>
+      <ScrollView contentContainerStyle={styles.cont}>
         {this.props.data.map(this._renderAbilityInfo)}
-      </View>
+      </ScrollView>
     );
   }
 }
+
+AbilitiesInfoTab.propTypes = {
+  data: PropTypes.array.isRequired
+};

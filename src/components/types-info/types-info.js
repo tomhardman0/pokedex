@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
   View,
   Text
@@ -12,7 +13,7 @@ import abilityIdToDesc from '../../../config/abilities-to-desc.json';
 
 import textManipulation from '../../libs/text';
 
-export default class AbilitiesInfoTab extends Component {
+export default class TypesInfoTab extends Component {
 
   _renderTypesInfo = (type) => {
     return (
@@ -33,3 +34,7 @@ export default class AbilitiesInfoTab extends Component {
     );
   }
 }
+
+TypesInfoTab.propTypes = {
+  data: PropTypes.array.isRequired
+};

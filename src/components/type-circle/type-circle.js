@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
   View,
   Text
@@ -9,7 +10,7 @@ import typeToColourStyles from '../../shared/type-to-colour';
 
 import textManipulation from '../../libs/text';
 
-export default ({ type, circleStyle, textStyle, shortenedType }) => {
+export default function TypeCircle({ type, circleStyle, textStyle, shortenedType }) {
   const capitalised = textManipulation.capitalise(type);
   const text = shortenedType ? capitalised.slice(0,2) : capitalised;
   return (
@@ -20,3 +21,10 @@ export default ({ type, circleStyle, textStyle, shortenedType }) => {
     </View>
   );
 }
+
+TypeCircle.propTypes = {
+  type: PropTypes.string.isRequired,
+  circleStyle: PropTypes.number,
+  textStyle: PropTypes.number,
+  shortenedType: PropTypes.bool
+};

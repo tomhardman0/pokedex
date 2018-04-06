@@ -58,14 +58,15 @@ export default class ListView extends Component {
       return this.filterDataForTypefilter();
     }
 
+    const normalizedSearchText = searchText.toLowerCase().replace(' ', '-');
     return this.filterDataForTypefilter().filter((datum) => {
-      return datum.name.match(searchText);
+      return datum.name.match(normalizedSearchText);
     });
   }
 
   handleSearch(text) {
     this.setState({
-      searchText: text.toLowerCase()
+      searchText: text
     });
   }
 

@@ -13,7 +13,9 @@ export default styles = StyleSheet.create({
   circles: {
     width: 100,
     height: 100,
-    borderRadius: 50
+    borderRadius: 50,
+    marginLeft: 12,
+    marginRight: 12
   },
   text: {
     fontSize: 18
