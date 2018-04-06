@@ -54,7 +54,7 @@ const _pokeRequest = async (id) => {
 // })(1);
 
 // THE BELOW FUNCTION REQUESTS, MANIPULATES, AND
-// REWRITES ALL THE APP DATA. WITH GREAT POWER...
+// REWRITES THE ABILITIES TO DESC MAP.
 // (async function abilities(id) {
 //   const str = fs.readFileSync('./config/abilities.json');
 //   const data = JSON.parse(str);
