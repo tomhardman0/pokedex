@@ -10,6 +10,8 @@ import {
 } from 'react-native-tab-view';
 
 import StatsInfo from '../stats-info/stats-info';
+import AbilitiesInfo from '../abilities-info/abilities-info';
+import TypesInfo from '../types-info/types-info';
 
 import styles from './info-tabs-styles';
 import typeToColourStyles from '../../shared/type-to-colour';
@@ -18,9 +20,6 @@ const initialLayout = {
   height: 0,
   width: Dimensions.get('window').width,
 };
-
-const SecondRoute = () => <View style={[ styles.container, { backgroundColor: '#ffffff' } ]} />;
-const ThirdRoute = () => <View style={[ styles.container, { backgroundColor: '#ffffff' } ]} />;
 
 export default class InfoTabs extends Component {
   state = {
@@ -36,12 +35,12 @@ export default class InfoTabs extends Component {
     this.setState({ index });
   }
 
-  _renderScene(...args) {
+  _renderScene() {
     const { stats, abilities, types } = this.props.info;
     return SceneMap({
       stats: () => <StatsInfo data={stats} />,
-      abilities: SecondRoute,
-      types: ThirdRoute
+      abilities: () => <AbilitiesInfo data={abilities} />,
+      types: () => <TypesInfo data={types} />
     });
   }
 

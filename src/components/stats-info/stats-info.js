@@ -17,25 +17,24 @@ const displayNameMap = {
 
 export default class StatsInfoTab extends Component {
 
-  _renderStatsTiles = () => {
-    return this.props.data.map((item) => {
-      return (
-        <View key={item.name} style={styles.statBlock}>
-          <Text style={styles.tileTag}>
-            {displayNameMap[item.name]}
-          </Text>
-          <Text style={styles.tileNum}>
-            {item.num}
-          </Text>
-        </View>
-      );
-    }).reverse();
+  _renderStatsTiles = (item) => {
+    return (
+      <View key={item.name} style={styles.statBlock}>
+        <Text style={styles.tileTag}>
+          {displayNameMap[item.name]}
+        </Text>
+        <Text style={styles.tileNum}>
+          {item.num}
+        </Text>
+      </View>
+    );
   }
 
   render() {
+    // reversing because i want them reversed, no actual reason
     return (
       <View style={styles.cont}>
-        {this._renderStatsTiles()}
+        {this.props.data.map(this._renderStatsTiles).reverse()}
       </View>
     );
   }

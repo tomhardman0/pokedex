@@ -17,6 +17,8 @@ import InfoTabs from '../info-tabs/info-tabs';
 import idToImageMap from '../../../config/id-to-image';
 import typeToColourStyles from '../../shared/type-to-colour';
 
+import textManipulation from '../../libs/text';
+
 export default class ExplorerNavigation extends Component {
   static navigationOptions = ({ navigation }) => {
     return {
@@ -27,17 +29,20 @@ export default class ExplorerNavigation extends Component {
 
   render() {
     const { goBack, state } = this.props.navigation;
-    const { types, abilities, stats, id } = state.params;
+    const { types, abilities, stats, id, name } = state.params;
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, typeToColourStyles[types[0]]]}>
         <BackButton goBack={goBack} />
 
-        <View style={[styles.imageCont, typeToColourStyles[types[0]]]}>
+        <View style={styles.imageCont}>
           <Image
             style={styles.image}
             source={idToImageMap[id]}
           />
         </View>
+        <Text style={styles.name}>
+          {textManipulation.capitalise(name)}
+        </Text>
 
         <InfoTabs info={state.params} />
 
