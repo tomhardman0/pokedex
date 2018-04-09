@@ -7,7 +7,6 @@ import {
 } from 'react-native';
 
 import styles from './search-item-styles';
-import typeToColourStyles from '../../shared/type-to-colour';
 
 import TypeCircle from '../type-circle/type-circle';
 

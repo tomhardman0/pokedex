@@ -10,19 +10,15 @@ import {
 
 import defaultHeaderStyles from '../../shared/default-header';
 import styles from './type-explorer-styles';
-import typeToColourStyles from '../../shared/type-to-colour';
 
 import typeExplorerConfig from '../../../config/type-explorer-config';
 
-import BackButton from '../back-button/back-button';
+import GenericContainer from '../generic-container/generic-container';
+import mapsHoc from '../maps-hoc/maps-hoc';
 
-export default class TypeExplorer extends Component {
-  static navigationOptions = {
-    title: 'Explorer',
-    ...defaultHeaderStyles
-  }
+class TypeExplorer extends Component {
 
-  _renderTypeTile = (datum, navigate) => {
+  _renderTypeTile = (datum, navigate, typeColourMap) => {
     const { item } = datum;
     const searchOptions = {
       title: `Search ${item.name} types`,
@@ -31,7 +27,7 @@ export default class TypeExplorer extends Component {
 
     return (
       <TouchableOpacity
-        style={[styles.listItem, typeToColourStyles[item.name]]}
+        style={[styles.listItem, typeColourMap[item.name]]}
         onPress={() => navigate('Search', searchOptions)}>;
           <View style={styles.tileContainer}>
             <Image
@@ -48,16 +44,22 @@ export default class TypeExplorer extends Component {
   render() {
     const { goBack, navigate } = this.props.navigation;
     return (
-      <View style={styles.container}>
-        <BackButton goBack={goBack} />
+      <GenericContainer goBack={goBack}>
         <FlatList
           data={typeExplorerConfig}
           numColumns={2}
           renderItem={this._renderTypeTile}
-          renderItem={(item) => this._renderTypeTile(item, navigate)}
+          renderItem={(item) => this._renderTypeTile(item, navigate, this.props.typeColourMap)}
           initialNumToRender={8}
         />
-      </View>
+      </GenericContainer>
     );
   }
 }
+
+const TypeExplorerWithMaps = mapsHoc(TypeExplorer);
+TypeExplorerWithMaps.navigationOptions = {
+  title: 'Explorer',
+  ...defaultHeaderStyles
+};
+export default TypeExplorerWithMaps;

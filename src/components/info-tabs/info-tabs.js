@@ -13,16 +13,16 @@ import {
 import StatsInfo from '../stats-info/stats-info';
 import AbilitiesInfo from '../abilities-info/abilities-info';
 import TypesInfo from '../types-info/types-info';
+import mapsHoc from '../maps-hoc/maps-hoc';
 
 import styles from './info-tabs-styles';
-import typeToColourStyles from '../../shared/type-to-colour';
 
 const initialLayout = {
   height: 0,
   width: Dimensions.get('window').width,
 };
 
-export default class InfoTabs extends Component {
+class InfoTabs extends Component {
   state = {
     index: 0,
     routes: [
@@ -57,7 +57,7 @@ export default class InfoTabs extends Component {
   }
 
   render() {
-    const headerBgColour = typeToColourStyles[this.props.info.types[0]];
+    const headerBgColour = this.props.typeColourMap[this.props.info.types[0]];
     return (
       <TabViewAnimated
         navigationState={this.state}
@@ -71,5 +71,8 @@ export default class InfoTabs extends Component {
 }
 
 InfoTabs.propTypes = {
-  info: PropTypes.object.isRequired
+  info: PropTypes.object.isRequired,
+  typeColourMap: PropTypes.object.isRequired
 };
+
+export default mapsHoc(InfoTabs);

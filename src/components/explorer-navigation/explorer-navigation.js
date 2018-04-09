@@ -11,7 +11,7 @@ import {
 import defaultHeaderStyles from '../../shared/default-header';
 import styles from './explorer-navigation-styles';
 
-import BackButton from '../back-button/back-button';
+import GenericContainer from '../generic-container/generic-container';
 
 export default class ExplorerNavigation extends Component {
   static navigationOptions = {
@@ -22,8 +22,7 @@ export default class ExplorerNavigation extends Component {
   render() {
     const { goBack, navigate } = this.props.navigation;
     return (
-      <View style={styles.container}>
-        <BackButton goBack={goBack} />
+      <GenericContainer goBack={goBack}>
 
         <TouchableOpacity
           style={styles.tile}
@@ -52,7 +51,7 @@ export default class ExplorerNavigation extends Component {
 
             <Text style={styles.tileText}>Type</Text>
         </TouchableOpacity>
-      </View>
+      </GenericContainer>
     );
   }
 }

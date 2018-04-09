@@ -6,15 +6,16 @@ import {
 } from 'react-native';
 
 import styles from './type-circle-styles';
-import typeToColourStyles from '../../shared/type-to-colour';
+
+import mapsHoc from '../maps-hoc/maps-hoc';
 
 import textManipulation from '../../libs/text';
 
-export default function TypeCircle({ type, circleStyle, textStyle, shortenedType }) {
+function TypeCircle({ type, circleStyle, textStyle, shortenedType, typeColourMap }) {
   const capitalised = textManipulation.capitalise(type);
   const text = shortenedType ? capitalised.slice(0,2) : capitalised;
   return (
-    <View style={[styles.typeCircle, typeToColourStyles[type], circleStyle]}>
+    <View style={[styles.typeCircle, typeColourMap[type], circleStyle]}>
       <Text style={[styles.typeCircleText, textStyle]}>
         {text}
       </Text>
@@ -28,3 +29,5 @@ TypeCircle.propTypes = {
   textStyle: PropTypes.number,
   shortenedType: PropTypes.bool
 };
+
+export default mapsHoc(TypeCircle);

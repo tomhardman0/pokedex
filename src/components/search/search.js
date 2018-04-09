@@ -10,7 +10,7 @@ import {
 import defaultHeaderStyles from '../../shared/default-header';
 import styles from './search-styles';
 
-import BackButton from '../back-button/back-button';
+import GenericContainer from '../generic-container/generic-container';
 import SearchInput from '../search-input/search-input';
 import SearchItem from '../search-item/search-item';
 import Separator from '../separator/separator';
@@ -83,8 +83,7 @@ export default class ListView extends Component {
     const { goBack, navigate } = this.props.navigation;
     const { state } = this;
     return (
-      <View style={styles.container}>
-        <BackButton goBack={goBack} />
+      <GenericContainer goBack={goBack}>
         <SearchInput
           placeholder={PLACEHOLDER_TEXT}
           handleSearch={this.handleSearch.bind(this)}
@@ -99,7 +98,7 @@ export default class ListView extends Component {
             initialNumToRender={12}
           />
         </View>
-      </View>
+      </GenericContainer>
     );
   }
 }

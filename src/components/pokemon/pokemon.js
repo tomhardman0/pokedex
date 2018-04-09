@@ -11,42 +11,44 @@ import {
 import defaultHeaderStyles from '../../shared/default-header';
 import styles from './pokemon-styles';
 
-import BackButton from '../back-button/back-button';
+import GenericContainer from '../generic-container/generic-container';
 import InfoTabs from '../info-tabs/info-tabs';
-
-import idToImageMap from '../../../config/id-to-image';
-import typeToColourStyles from '../../shared/type-to-colour';
+import mapsHoc from '../maps-hoc/maps-hoc';
 
 import textManipulation from '../../libs/text';
 
-export default class ExplorerNavigation extends Component {
-  static navigationOptions = ({ navigation }) => {
-    return {
-      title: navigation.state.params.name,
-      ...defaultHeaderStyles
-    };
-  }
+class Pokemon extends Component {
 
   render() {
     const { goBack, state } = this.props.navigation;
     const { types, abilities, stats, id, name } = state.params;
     return (
-      <View style={[styles.container, typeToColourStyles[types[0]]]}>
-        <BackButton goBack={goBack} />
+      <GenericContainer
+        extraStyles={this.props.typeColourMap[types[0]]}
+        goBack={goBack}>
 
-        <View style={styles.imageCont}>
-          <Image
-            style={styles.image}
-            source={idToImageMap[id]}
-          />
-        </View>
-        <Text style={styles.name}>
-          {textManipulation.capitalise(name)}
-        </Text>
+          <View style={styles.imageCont}>
+            <Image
+              style={styles.image}
+              source={this.props.idToImageMap[id]}
+            />
+          </View>
+          <Text style={styles.name}>
+            {textManipulation.capitalise(name)}
+          </Text>
 
-        <InfoTabs info={state.params} />
+          <InfoTabs info={state.params} />
 
-      </View>
+      </GenericContainer>
     );
   }
 }
+
+const PokemonWithMaps = mapsHoc(Pokemon);
+PokemonWithMaps.navigationOptions = ({ navigation }) => {
+  return {
+    title: navigation.state.params.name,
+    ...defaultHeaderStyles
+  };
+};
+export default PokemonWithMaps;
