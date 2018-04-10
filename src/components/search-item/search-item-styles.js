@@ -8,7 +8,8 @@ export default styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    height: 80
+    height: 80,
+    backgroundColor: '#ffffff'
   },
   listItemNumberWrapper: {
     position: 'absolute',
